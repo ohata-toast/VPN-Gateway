@@ -4,7 +4,7 @@
 
 * 이름: 생성할 VPN Gateway의 이름을 입력합니다.
 * VPC: VPN Gateway를 만들 VPC를 선택합니다.
-* Subnet: VPN Gateway를 만들 subnet을 선택합니다.
+* 서브넷: VPN Gateway를 만들 서브넷을 선택합니다.
 * 설명: 필요한 설명을 입력합니다.
 
 #### VPN Gateway 변경
@@ -21,6 +21,8 @@
 * 터널 옵션을 선택하여 VPN Connection을 생성할 수 있습니다.
 * VPN Connection이 생성 되는데에는 시간이 수분 정도 걸릴수 있습니다.
 * 생성이 완료되면 상태 표시가 `ACTIVE`로 변경 됩니다.
+* 삭제 대기중이거나 생성 대기중인 VPN Connection이 있으면 해당 작업이 완료되어야 다른 VPN Connection의 생성이 가능합니다.
+* VPN Connection에 사용되는 대역은 로컬과 리모트에서 서로 겹치지 않는 대역을 사용해야 합니다. (서브넷의 대역뿐만 아니라 VPC대역과도 겹치지 않아야 합니다.)
 
 #### VPN 터널 옵션
 * 로컬 ipv4 CIDR : VPN 터널을 통한 통신이 허용된 NHN Cloud 측 IPv4 CIDR 범위
@@ -52,3 +54,4 @@
 #### VPN Connection 삭제
 
 * 선택한 VPN Connection을 삭제할 수 있습니다.
+* 삭제 대기중이거나 생성 대기중인 VPN Connection이 있으면 해당 작업이 완료되어야 다른 VPN Connection의 삭제가 가능합니다.
