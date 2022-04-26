@@ -24,5 +24,4 @@ VPC와 고객의 온프레비스 네트워크 사이에 암호화된 네트워�
 * VPC 단위로 VPN Gateway를 생성하게 되고 사용할 대역폭을 정할 수 있습니다. 하나의 VPN Gateway에 속한 VPN Connection은 모두 같은 대역폭을 이용하게 됩니다. 예를 들어 최초 VPN Connection을 20Mbps로 생성을 했다면 해당 VPC에서 이후 추가로 생성하는 VPN Connection은 모두 20Mbps 대역폭을 사용하게 됩니다. 다른 대역폭을 사용하려면 다른 VPC에서 최초 VPN Connection을 만들때 원하는 대역폭(20M, 50M, 100M, 1G 중 선택)을 지정해서 생성할 수 있습니다.
 * VPN Gateway는 각 VPC마다 한개씩 생성이 가능합니다.
 * 각 VPN Gateway당 최대 연결은 10개 입니다.
-* VPN Connection을 생성하려는 VPC에는 인터넷 게이트웨이 연결이 필요합니다.
-* VPN Connection을 사용하는 서브넷에서는 다른 Gateway (NAT Gateway, Service Gateway, Peering Gateway 등등)가 정상 동작하지 않습니다. 따라서 함께 사용하지 않아야 합니다.
+* VPN과 연결된 VPC에서는 피어링을 써서 다른 네트워크에 접근하거나, 기타 Gateway를 통해서 다른 네트워크 혹은 서비스에 접근하는 것을 지원하지 않습니다.
