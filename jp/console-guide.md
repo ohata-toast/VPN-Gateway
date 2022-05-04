@@ -27,7 +27,7 @@
 * 생성이 완료되면 상태 표시가 `ACTIVE`로 변경됩니다.
 * 삭제 대기 중이거나 생성 대기 중인 VPN Connection이 있으면 해당 작업이 완료되어야 다른 VPN Connection의 생성이 가능합니다.
 * VPN Connection에 사용되는 대역은 로컬과 리모트에서 서로 겹치지 않아야 합니다. 서브넷의 대역뿐만 아니라 VPC 대역과도 겹치지 않아야 합니다.
-* Routing 메뉴에서 리모트 ipv4 CIDR 대역을 VPN Gateway로 라우팅 되도록 라우트 생성을 해주어야 합니다.
+* Routing 메뉴에서 리모트 ipv4 CIDR 대역을 VPN Gateway로 라우팅되도록 라우트를 생성해야 합니다.
 * 각 VPN Gateway당 최대 VPN Connection은 10개입니다.
 * VPC를 온프레미스 네트워크에 연결하는 경우 서로 네트워크 주소가 겹치지 않는 대역을 사용해야 합니다.
 
