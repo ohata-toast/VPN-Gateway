@@ -1,68 +1,69 @@
-## Network > VPN Gateway(Site-to-Site VPN) > 콘솔 사용 가이드
+## Network > VPN Gateway (Site-to-Site VPN) > Console User Guide
 
-콘솔에서 VPN Gateway(Site-to-Site VPN) 서비스를 사용하는 방법을 설명합니다.
+This guide describes how to use the VPN Gateway (Site-to-Site VPN) service from the console.
 
-## VPN Gateway 생성
+## Create a VPN Gateway
 
-* 이름: 생성할 VPN Gateway의 이름을 입력합니다.
-* VPC: VPN Gateway를 만들 VPC를 선택합니다.
-* 서브넷: VPN Gateway를 만들 서브넷을 선택합니다.
-* 설명: 필요한 설명을 입력합니다.
-* 생성된 VPN Gateway의 네트워크 인터페이스 정보는 네트워크 인터페이스 메뉴에서도 확인이 가능합니다.
-* 각 VPC마다 한 개씩 생성할 수 있습니다.
+* Name: Enter the name of the VPN gateway to be created.
+* VPC: Select the VPC in which to create the VPN gateway.
+* Subnet: Select the subnet in which to create the VPN gateway.
+* Description: Enter the required description.
+* The network interface information of the created VPN gateway can also be found in the Network Interface menu.
+* You can create one VPN gateway for each VPC.
 
-## VPN Gateway 변경
+## Modify a VPN Gateway
 
-* 이름과 설명을 변경할 수 있습니다.
+* You can modify the name and description.
 
-## VPN Gateway 삭제
+## Delete a VPN Gateway
 
-* 선택한 Gateway를 삭제할 수 있습니다.
-* 삭제하려면 연결된 VPN 연결이 없어야 합니다.
+* You can delete the selected gateway.
+* To delete a gateway, there must be no attached VPN connections.
 
-## VPN 연결 생성
+## Create a VPN Connection
 
-* 터널 옵션을 선택하여 VPN 연결을 생성할 수 있습니다.
-* VPN 연결 생성 완료까지 몇 분 정도 걸릴 수 있습니다.
-* 생성이 완료되면 상태 표시가 `ACTIVE`로 변경됩니다.
-* 삭제 대기 중이거나 생성 대기 중인 VPN 연결이 있으면 해당 작업이 완료되어야 다른 VPN 연결의 생성이 가능합니다.
-* VPN 연결에 사용되는 대역은 로컬과 리모트에서 서로 겹치지 않아야 합니다. 서브넷의 대역뿐만 아니라 VPC 대역과도 겹치지 않아야 합니다.
-* Routing 메뉴에서 피어 대역을 VPN Gateway로 라우팅되도록 라우트를 생성해야 합니다.
-* 각 VPN Gateway당 최대 VPN 연결은 10개입니다.
-* VPC를 온프레미스 네트워크에 연결하는 경우 서로 네트워크 주소가 겹치지 않는 대역을 사용해야 합니다.
-* 피어 게이트웨이 주소는 동일한 주소를 중복해서 사용할 수 없습니다.
-* 로컬 대역은 동일 VPC 내부에서는 중복해서 사용할 수 없습니다.
-* 피어 대역은 다른 VPC에서 중복해서 사용이 가능합니다.
+* You can create a VPN connection by selecting the tunnel options.
+* It may take a few minutes to complete the creation of the VPN connection.
+* When the creation is completed, the status indicator changes to `ACTIVE`.
+* If there are VPN connections pending for deletion or creation, the tasks must be completed before any other VPN connections can be created.
+* The range used for the VPN connection must not overlap in local and remote networks. It must not overlap with the subnet' range as well as the VPC's range.
+* In the Routing menu, you must create a route so that the peer range is routed to the VPN gateway.
+* Each VPN gateway can have a maximum of 10 VPN connections.
+* When connecting your VPC to an on-premises network, you must use address ranges with no overlapping network addresses.
+* For the peer gateway address, you cannot use the same address in duplicate.
+* The local range cannot be used in duplicate within the same VPC.
+* The peer range can be used in duplicate in different VPCs.
 
-## VPN 터널 옵션
-* 로컬 대역: VPN 터널을 통한 통신이 허용된 NHN Cloud 측 IPv4 CIDR 범위
-    * 선택한 Subnet의 대역이 들어갑니다.
-* 피어 대역: VPN 터널을 통한 통신이 허용된 고객 게이트웨이(온프레미스) 측 IPv4 CIDR 범위
-* 피어 게이트웨이 주소: 고객 측 게이트웨이의 public ip주소
-* IKE1 암호화/무결성 알고리즘: 1단계 IKE 협상에 대해 VPN 터널에 허용되는 암호화, 무결성 알고리즘
-    * (aes192, aes256, des, 3des 중 택 1)-(md5, sha1 중 택 1)
-* IKE1 인증 수명 시간: 1단계 IKE 협상의 수명(초)입니다.
-    * 900에서 28,800 사이의 숫자를 지정할 수 있습니다.
-* 1단계 Diffie-Hellman(DH) Group: IKE 협상의 1단계에서 VPN 터널에 허용되는 DH 그룹 번호입니다.
-    * 5, 2, 1 중 택 1
-* IKE2 암호화/무결성 알고리즘: 2단계 IKE 협상에 대해 VPN 터널에 허용되는 암호화, 무결성 알고리즘
-    * (aes192, aes256, des, 3des 중 택 1)-(md5, sha1 중 택 1)
-* IKE2 인증 수명 시간: 2단계 IKE 협상의 수명(초)입니다.
-    * 900에서 28,800 사이의 숫자를 지정할 수 있습니다.
-* IKE2 Diffie-Hellman(DH) Group: IKE 협상의 2단계에서 VPN 터널에 허용되는 DH 그룹 번호입니다.
-    * 5, 2, 1 중 택 1
-* 대역폭: 연결에 사용할 대역폭을 결정합니다.
-    * 20M, 50M, 100M, 1G 중 택1
-    * outbound 대역폭을 의미합니다.
-* 사전 공유 키(Pre-Shared Key): 사전 공유 키(PSK)는 대상 게이트웨이와 고객 게이트웨이 사이의 초기 인터넷 키 교환(IKE) 보안 연결을 설정합니다.
-    * 영문자, 숫자, 특수문자를 사용할 수 있습니다.
-    * 8~32바이트 사이의 값을 사용합니다.
+### VPN Tunnel Options
 
-## VPN 연결 변경
+* Local Range: IPv4 CIDR range on the NHN Cloud side that is allowed for communication through VPN tunnel
+    * The range of the selected subnet is entered.
+* Peer Range: IPv4 CIDR range on the customer gateway (on-premises) side that is allowed for communication through VPN tunnel.
+* Peer Gateway Address: Public IP address of the customer-side gateway
+* IKE1 Encryption/Integrity Algorithms: Encryption and integrity algorithms allowed for the VPN tunnel for phase 1 IKE negotiation
+    * (Choose one among aes192, aes256, des, 3des)-(Choose one among md5, sha1)
+* IKE1 Authentication Lifetime: Lifetime of phase 1 IKE negotiation (in seconds).
+    * You can specify a number between 900 and 28,800.
+* Phase 1 Diffie-Hellman (DH) Group: DH group number allowed for the VPN tunnel in the phase 1 of IKE negotiation.
+    * Choose one among 5, 2, 1
+* IKE2 Encryption/Integrity Algorithms: Encryption and integrity algorithms allowed for the VPN tunnel for phase 2 IKE negotiation
+    * (Choose one among aes192, aes256, des, 3des)-(Choose one among md5, sha1)
+* IKE2 Authentication Lifetime: Lifetime of phase 2 IKE negotiation (in seconds).
+    * You can specify a number between 900 and 28,800.
+* IKE2 Diffie-Hellman (DH) Group: DH group number allowed for the VPN tunnel in the phase 2 of IKE negotiation.
+    * Choose one among 5, 2, 1
+* Bandwidth: Determine the bandwidth to use for the connection.
+    * Choose 1 among 20M, 50M, 100M, and 1G
+    * Indicates the outbound bandwidth.
+* Pre-Shared Key: A pre-shared key (PSK) establishes an initial Internet Key Exchange (IKE) secure connection between the target gateway and the customer gateway.
+    * You can use English letters, numbers, and special characters.
+    * Use a value between 8 and 32 bytes.
 
-* 이름과 설명을 변경할 수 있습니다.
+## Modify a VPN Connection
 
-## VPN 연결 삭제
+* You can modify the name and description.
 
-* 선택한 VPN 연결을 삭제할 수 있습니다.
-* 삭제 대기 중이거나 생성 대기 중인 VPN 연결이 있으면 해당 작업이 완료되어야 다른 VPN 연결을 삭제할 수 있습니다.
+## Delete a VPN Connection
+
+* You can delete the selected VPN connection.
+* If there are VPN connections pending for deletion or creation, the tasks must be completed before any other VPN connections can be deleted.
