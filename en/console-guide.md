@@ -35,6 +35,7 @@ This guide describes how to use the VPN Gateway (Site-to-Site VPN) service from 
 * The peer range can be used in duplicate in different VPCs.
 
 ### VPN Tunnel Options
+
 * Local Range: IPv4 CIDR range on the NHN Cloud side that is allowed for communication through VPN tunnel
     * The range of the selected subnet is entered.
 * Peer Range: IPv4 CIDR range on the customer gateway (on-premises) side that is allowed for communication through VPN tunnel.
